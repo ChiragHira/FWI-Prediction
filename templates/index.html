@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Adjust width as needed */
+            max-width: 90%; /* Maximum width */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            align-self: flex-end; /* Align button to the bottom */
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action = "/prediction" method = 'POST'>
+        <h2>FWI Predictor</h2>
+        <label for="temp">Temperature (°C):</label>
+        <input type="number" id="temp" name="Temperature" min="-100" max="42" step="any" required>
+        
+        <label for="rh">Relative Humidity (%):</label>
+        <input type="number" id="rh"  name = "RH" min="21"  max="90" step="any" required>
+        
+        <label for="ws">Wind Speed (km/h):</label>
+        <input type="number" id="ws" name = "WS" min="6" max="29" step="any" required>
+        
+        <label for="rain">Rain (mm):</label>
+        <input type="number" id="rain" name = "Rain" min="0" max="16.8" step="any" required>
+
+        <label for="ffmc">Fine Fuel Moisture Code (FFMC):</label>
+        <input type="number" id="ffmc" name = "FFMC" min="28.6" max="92.54" step="any" required>
+        
+        <label for="dmc">Duff Moisture Code (DMC):</label>
+        <input type="number" id="dmc" name = "DMC" min="1.1" max="65.9" step="any" required>
+        
+        <label for="isi">Initial Spread Index (ISI):</label>
+        <input type="number" id="isi" name = "ISI" min="0" max="18.5" step="any" required>
+        
+        <label for="Classes">Class:</label>
+        <input type="number" id="Classes" name = "Cla" min="0" max="1" step="any" required>
+
+        <label for="Region">Region:</label>
+        <input type="number" id="Region" name = "Region" min="0" max="1" step="any" required>
+        
+        <button type="submit">Predict FWI</button>
+    </form>
+    <h3>
+        The FWI predection is {{Result}}
+    </h3>
+</body>
+</html>
